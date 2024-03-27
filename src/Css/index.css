@@ -12,6 +12,9 @@
 html {
   overflow-y: scroll;
   overflow-x: hidden;
+  background: linear-gradient(#341c2c, #241c30);
+  width: 100vw;
+  height: 100vh;
 }
 ::-webkit-scrollbar {
   width: 0px;
