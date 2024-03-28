@@ -1,0 +1,77 @@
+.register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 250px;
+}
+.register > .left {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.register > .left > .branding {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.register > .left > .branding > img {
+  width: 100px;
+}
+.register > .left > .branding > .logo {
+  font-size: 40px;
+  color: #ef3ef5;
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-family: "Edu NSW ACT Foundation", cursive;
+}
+.register > .left > label {
+  color: #ef3ef5;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 200;
+  margin-left: 4px;
+  font-family: "Familjen Grotesk", sans-serif;
+  margin-bottom: 1px;
+  transition: 0.75s all;
+}
+.register > .left > input {
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ef3ef5;
+  padding: 8px 10px;
+  color: #fff;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  outline: 0;
+  transition: 0.75s all;
+}
+.register > .left > input:focus {
+  border: 1px solid #fff;
+}
+.register > .left > input:focus + .registerLabel {
+  color: #fff;
+}
+.register > .left > button {
+  background-color: #ef3ef5;
+  color: white;
+  padding: 10px 0px;
+  border: 0;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-family: "Inter";
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0);
+  transition: all 0.75s;
+}
+.register > .left > button:hover {
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ef3ef5;
+  color: #ef3ef5;
+}
+.register > img {
+  width: calc(324px * 1.4);
+  height: calc(332px * 1.4);
+}
