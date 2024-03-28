@@ -71,6 +71,15 @@
   border: 1px solid #ef3ef5;
   color: #ef3ef5;
 }
+.register > .left > .already {
+  margin-top: 5px;
+  color: #fff;
+  font-size: 14px;
+}
+.register > .left > .already > .link {
+  font-weight: 500;
+  color: #ef3ef5;
+}
 .register > img {
   width: calc(324px * 1.4);
   height: calc(332px * 1.4);

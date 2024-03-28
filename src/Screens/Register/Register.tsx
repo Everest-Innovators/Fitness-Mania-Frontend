@@ -2,11 +2,18 @@ import React from "react";
 import WomenImg from "../../Assets/women.png";
 import LogoImg from "../../Assets/logo.png";
 import "../../Css/Register/register.css";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
     <div className="register">
       <div className="left">
+        <div className="already">
+          Already have an account?{" "}
+          <Link className="link" to={"/login"}>
+            Sign in
+          </Link>
+        </div>
         <button>Register</button>
         <input placeholder="Password" type="password" id="password" />
         <label className="registerLabel" htmlFor="password">
