@@ -15,12 +15,14 @@ const Nav = () => {
       </div>
       <div className="search">
         <img alt="Search" src={SearchImg} />
-        <input type="text" />
+        <input placeholder="Search" type="text" />
+        <div />
       </div>
       <div className="right">
         <img alt="Create" src={PlusImg} />
         <img alt="Notifications" src={NotificationImg} />
-        <img alt="Profile" src={AvatarImg} />
+        <img className="logo" alt="Profile" src={AvatarImg} />
+        <div />
       </div>
     </div>
   );

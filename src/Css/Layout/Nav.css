@@ -1,0 +1,78 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 6px 10px;
+  border-bottom: 1px solid #ffffff8e;
+  background-color: rgba(45, 54, 61, 0.411);
+}
+.nav > .branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+  gap: 4px;
+}
+.nav > .branding > img {
+  height: 50px;
+  width: 50px;
+}
+.nav > .branding > .logo {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: "Edu NSW ACT Foundation", cursive;
+}
+.nav > .search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 7px 16px;
+  background-color: rgba(66, 63, 78, 0.377);
+  gap: 10px;
+  border-radius: 25px;
+}
+.nav > .search > img,
+.nav > .search > div {
+  width: 20px;
+  height: 20px;
+}
+.nav > .search > input {
+  background: rgba(0, 0, 0, 0);
+  outline: 0;
+  border: 0;
+  color: #fff;
+  width: 450px;
+  font-size: 18px;
+}
+.nav > .search > input::placeholder {
+  color: gray;
+}
+.nav > .right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+}
+.nav > .right > img {
+  height: 28px;
+  width: 28px;
+}
+.nav > .right > .logo {
+  height: 35px;
+  width: 35px;
+  border-radius: 9999px;
+}
+.nav > .right > div {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(0, 255, 0);
+  border-radius: 9999px;
+  position: absolute;
+  right: 10px;
+  top: 39px;
+  border: 2.5px solid #381c2c;
+}
