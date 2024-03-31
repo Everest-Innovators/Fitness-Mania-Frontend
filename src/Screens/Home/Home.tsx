@@ -10,7 +10,7 @@ const Home = () => {
         <Post
           avatar={Avatar}
           username="new__"
-          timestamp={Date.now()}
+          timestamp={Date.now() - 100000}
           title="[AskJS] Coding a webpage button that redirects to a random URL (read body text)"
           body={`Hello. I'm working on a Neocities website and I want to create a button that redirects the user to a random web URL when clicked (purely for fun).
 
