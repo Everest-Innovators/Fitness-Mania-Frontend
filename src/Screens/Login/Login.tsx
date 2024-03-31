@@ -1,7 +1,7 @@
 import React from "react";
 import WomenImg from "../../Assets/women.png";
 import LogoImg from "../../Assets/logo.png";
-import "../../Css/Register/register.css";
+import "../../Css/Register/Register.css";
 import { Link } from "react-router-dom";
 
 const Login = () => {
