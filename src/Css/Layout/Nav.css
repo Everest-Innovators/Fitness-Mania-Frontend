@@ -72,7 +72,7 @@
 .nav > .right > div {
   width: 12px;
   height: 12px;
-  background-color: rgb(0, 255, 0);
+  background-color: #00ff00;
   border-radius: 9999px;
   position: absolute;
   right: 10px;

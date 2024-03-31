@@ -43,9 +43,9 @@ const Post = (props: Props) => {
         </div>
         <div className="bottom">
           <div className="votes">
-            <img src={likePng} alt="Upvote" />
+            <img className="like" src={likePng} alt="Like" />
             <div style={{ marginRight: 8 }}>{props.like}</div>
-            <img src={dislikePng} alt="Downvote" />
+            <img className="dislike" src={dislikePng} alt="Dislike" />
             <div>{props.dislike}</div>
           </div>
           <div className="comment">

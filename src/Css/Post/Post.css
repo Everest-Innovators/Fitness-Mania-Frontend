@@ -70,10 +70,21 @@
   align-items: center;
   gap: 5px;
   padding: 5px 13px;
-  background: rgba(66, 63, 78, 0.295);
+  background: rgba(66, 63, 78, 0.151);
   border-radius: 20px;
+  transition: all 0.5s;
+}
+.post > .postCont > .bottom > div:hover {
+  background: rgba(66, 63, 78, 0.589);
 }
 .post > .postCont > .bottom > div > img {
   width: 20px;
   height: 20px;
+  transition: all 0.5s;
+}
+.post > .postCont > .bottom > .votes > .like:hover {
+  filter: invert(64%) sepia(74%) saturate(4886%) hue-rotate(88deg) brightness(120%) contrast(129%);
+}
+.post > .postCont > .bottom > .votes > .dislike:hover {
+  filter: invert(62%) sepia(31%) saturate(2727%) hue-rotate(358deg) brightness(100%) contrast(107%);
 }
