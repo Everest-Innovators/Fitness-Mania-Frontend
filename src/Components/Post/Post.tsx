@@ -5,6 +5,7 @@ import upvotePng from "../../Assets/upvote.png";
 import downvotePng from "../../Assets/downvote.png";
 import commentPng from "../../Assets/comment.png";
 import sharePng from "../../Assets/share.png";
+import "../../Css/Post/Post.css";
 
 //timeAgo
 import en from "javascript-time-ago/locale/en";
@@ -29,15 +30,15 @@ const Post = (props: Props) => {
       <div className="top">
         <div className="left">
           <img src={props.avatar} alt="Avatar" />
-          <div className="username">{props.username}</div>
+          <div className="username">@{props.username}</div>
           <div className="time">{timeAgo.format(props.timestamp)}</div>
         </div>
         <img src={threedotsPng} alt="Dots" />
       </div>
       <div className="title">{props.title}</div>
       <div className="desc">
-        {props.body.slice(0, 300)}
-        {props.body.length > 300 ? "..." : ""}
+        {props.body.slice(0, 750)}
+        {props.body.length > 750 ? "..." : ""}
       </div>
       <div className="bottom">
         <div className="votes">
