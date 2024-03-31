@@ -22,6 +22,7 @@ I'm wondering if anyone here can guide me towards a working method of fixing thi
           postId={1232}
           comments={12}
           upvotes={53}
+          downvotes={53}
         />
       </div>
     </div>
