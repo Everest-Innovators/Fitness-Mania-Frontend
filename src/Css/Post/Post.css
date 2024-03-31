@@ -1,49 +1,79 @@
 .post {
-  width: 750px;
+  width: 800px;
+  border-bottom: 1px solid rgb(128, 118, 118);
+  padding: 5px 0;
+}
+.post > .postCont {
+  width: 800px;
   margin-top: 3px;
-  padding-top: 2px;
   cursor: pointer;
   color: #fff;
+  padding: 5px 25px;
+  border-radius: 20px;
+  transition: all 0.5s;
 }
-.post > .top {
+.post > .postCont:hover {
+  background: rgba(66, 63, 78, 0.171);
+}
+.post > .postCont > .top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
 }
-.post > .top > .left {
+.post > .postCont > .top > .left {
   display: flex;
   flex-direction: row;
   gap: 6px;
   align-items: center;
 }
-.post > .top > .left > img {
+.post > .postCont > .top > .left > img {
   height: 25px;
   width: 25px;
   border-radius: 9999px;
 }
-.post > .top > .left > .username {
+.post > .postCont > .top > .left > .username {
   font-size: 12px;
   font-weight: 700;
   color: rgb(187, 187, 187);
 }
-.post > .top > .left > .time {
+.post > .postCont > .top > .left > .time {
   font-size: 12px;
   font-weight: 500;
   color: gray;
 }
-.post > .top > img {
+.post > .postCont > .top > img {
   height: 16px;
   width: 16px;
 }
-.post > .title {
+.post > .postCont > .title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 6px;
 }
-.post > .desc {
+.post > .postCont > .desc {
   font-size: 15px;
   font-weight: 400;
   color: #d1cccc;
+  margin-bottom: 10px;
+}
+.post > .postCont > .bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.post > .postCont > .bottom > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 13px;
+  background: rgba(66, 63, 78, 0.295);
+  border-radius: 20px;
+}
+.post > .postCont > .bottom > div > img {
+  width: 20px;
+  height: 20px;
 }
