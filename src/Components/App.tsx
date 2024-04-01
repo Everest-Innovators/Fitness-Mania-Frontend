@@ -4,6 +4,7 @@ import Home from "../Screens/Home/Home";
 import Layout from "./Layout/Layout";
 import Register from "../Screens/Register/Register";
 import Login from "../Screens/Login/Login";
+import PostExpanded from "../Screens/Post/PostExpanded";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/post" element={<PostExpanded />} />
         </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />

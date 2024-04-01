@@ -9,6 +9,7 @@ import "../../Css/Post/Post.css";
 
 //timeAgo
 import en from "javascript-time-ago/locale/en";
+import { Link } from "react-router-dom";
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
@@ -26,7 +27,7 @@ interface Props {
 
 const Post = (props: Props) => {
   return (
-    <div className="post">
+    <Link to={`/post/${props.postId}`} className="post">
       <div className="postCont">
         <div className="top">
           <div className="left">
@@ -58,7 +59,7 @@ const Post = (props: Props) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
