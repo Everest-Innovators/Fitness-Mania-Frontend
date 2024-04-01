@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import threedotsPng from "../../Assets/threedots.png";
@@ -7,6 +7,7 @@ import dislikePng from "../../Assets/dislike.png";
 import commentPng from "../../Assets/comment.png";
 import sharePng from "../../Assets/share.png";
 import backPng from "../../Assets/back.png";
+import plusBPng from "../../Assets/plusB.png";
 import Avatar from "../../Assets/avatar.png";
 import "../../Css/Post/PostExpanded.css";
 
@@ -15,6 +16,8 @@ TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
 const PostExpanded = () => {
+  const [commentBottom, setCommentBottom] = useState<boolean>(false);
+  const [commentContent, setCommentContent] = useState<string>("");
   return (
     <div className="postExpanded">
       <div className="postCont">
@@ -23,7 +26,7 @@ const PostExpanded = () => {
             <img src={backPng} alt="Back" />
             <img src={Avatar} alt="Avatar" />
             <div className="username">@new__</div>
-            <div className="time">{timeAgo.format(Date.now() - 100000)}</div>
+            <div className="time">{timeAgo.format(Date.now(), "mini")} ago</div>
           </div>
           <img src={threedotsPng} alt="Dots" />
         </div>
@@ -52,6 +55,33 @@ const PostExpanded = () => {
             <div>Share</div>
           </div>
         </div>
+      </div>
+      <div className="addComment">
+        <textarea
+          value={commentContent}
+          onChange={(e) => {
+            setCommentContent(e.target.value);
+          }}
+          onClick={() => setCommentBottom(true)}
+          style={{ resize: !commentBottom ? "none" : "vertical", height: !commentBottom ? 50 : 0, minHeight: !commentBottom ? 0 : 50 }}
+          placeholder="Add a comment"
+        />
+        {commentBottom ? (
+          <div className="bottom">
+            <button
+              className="cancel"
+              onClick={() => {
+                setCommentBottom(false);
+                setCommentContent("");
+              }}
+            >
+              Cancel
+            </button>
+            <button className="comment">Comment</button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

@@ -86,3 +86,54 @@
 .postExpanded > .postCont > .bottom > .votes > .dislike:hover {
   filter: invert(62%) sepia(31%) saturate(2727%) hue-rotate(358deg) brightness(100%) contrast(107%);
 }
+
+.postExpanded > .addComment {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid gray;
+  border-radius: 24px;
+  margin-top: 28px;
+}
+.postExpanded > .addComment > textarea {
+  resize: vertical;
+  width: 750px;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  padding: 12px 18px;
+  outline: 0;
+  font-size: 16px;
+  color: white;
+}
+.postExpanded > .addComment > .bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 14px 4px;
+  gap: 8px;
+}
+.postExpanded > .addComment > .bottom > button {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  outline: 0;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.5s;
+}
+.postExpanded > .addComment > .bottom > .cancel {
+  background: rgba(51, 51, 51, 0.5);
+}
+.postExpanded > .addComment > .bottom > .comment {
+  background: rgba(0, 94, 202, 0.5);
+}
+.postExpanded > .addComment > .bottom > .cancel:hover {
+  background: rgba(51, 51, 51);
+}
+.postExpanded > .addComment > .bottom > .comment:hover {
+  background: rgba(0, 94, 202);
+}
