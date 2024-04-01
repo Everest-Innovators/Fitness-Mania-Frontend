@@ -4,6 +4,7 @@ import likePng from "../../../Assets/like.png";
 import dislikePng from "../../../Assets/dislike.png";
 import commentPng from "../../../Assets/comment.png";
 import plusPng from "../../../Assets/plus.png";
+import minusPng from "../../../Assets/minus.png";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 
@@ -55,7 +56,7 @@ const Comment = (props: CommentProps) => {
         {props.level >= 4 || !props.replies || props.replies?.length === 0 ? (
           <span className="dummy" />
         ) : (
-          <img onClick={() => setDisplayReplies(!displayReplies)} src={plusPng} alt="View Replies" />
+          <img onClick={() => setDisplayReplies(!displayReplies)} src={displayReplies ? minusPng : plusPng} alt="View Replies" />
         )}
         <div className="votes">
           <img className="like" src={likePng} alt="Like" />
