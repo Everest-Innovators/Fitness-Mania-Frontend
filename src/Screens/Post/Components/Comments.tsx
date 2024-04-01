@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../Css/Post/Comments.css";
 import likePng from "../../../Assets/like.png";
 import dislikePng from "../../../Assets/dislike.png";
@@ -42,8 +42,9 @@ interface CommentProps {
 }
 
 const Comment = (props: CommentProps) => {
+  const [displayReplies, setDisplayReplies] = useState<boolean>(false);
   return (
-    <div className="comment" style={{ width: 750 - (props.level - 1) * 50 }}>
+    <div className="comment" style={{ width: 725 - (props.level - 1) * 40 }}>
       <div className="top">
         <img src={props.author.avatar} alt="Avatar" />
         <div className="username">@{props.author.username}</div>
@@ -51,18 +52,27 @@ const Comment = (props: CommentProps) => {
       </div>
       <div className="body">{props.body}</div>
       <div className="bottom">
-        <img src={plusPng} alt="View Replies" />
+        {props.level >= 4 || !props.replies || props.replies?.length === 0 ? (
+          <span className="dummy" />
+        ) : (
+          <img onClick={() => setDisplayReplies(!displayReplies)} src={plusPng} alt="View Replies" />
+        )}
         <div className="votes">
           <img className="like" src={likePng} alt="Like" />
           <div style={{ marginRight: 8 }}>{props.likes}</div>
           <img className="dislike" src={dislikePng} alt="Dislike" />
           <div>{props.dislikes}</div>
         </div>
-        <div className="comment">
-          <img src={commentPng} alt="Comment" />
-          <div>Reply</div>
-        </div>
+        {props.level >= 4 ? (
+          ""
+        ) : (
+          <div className="comment">
+            <img src={commentPng} alt="Comment" />
+            <div>Reply</div>
+          </div>
+        )}
       </div>
+      {displayReplies && props.replies && props.replies.length > 0 ? <Comments comments={props.replies} level={props.level + 1} /> : ""}
     </div>
   );
 };
@@ -70,7 +80,7 @@ const Comment = (props: CommentProps) => {
 const Comments = (props: Props) => {
   let comments = [];
   for (let i = 0; i < props.comments.length; i++) {
-    comments.push(<Comment {...props.comments[0]} level={1} />);
+    comments.push(<Comment {...props.comments[i]} level={props.level} />);
   }
   return <div className="comments">{comments}</div>;
 };
