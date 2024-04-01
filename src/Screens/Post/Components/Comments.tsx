@@ -11,7 +11,7 @@ import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
-interface Comment {
+interface CommentType {
   author: {
     username: string;
     avatar: string;
@@ -20,11 +20,11 @@ interface Comment {
   body: string;
   likes: number;
   dislikes: number;
-  replies: Array<Comment>;
+  replies: Array<CommentType>;
 }
 
 interface Props {
-  comments: Array<Comment>;
+  comments: Array<CommentType>;
   level: number;
 }
 
@@ -37,7 +37,7 @@ interface CommentProps {
   body: string;
   likes: number;
   dislikes: number;
-  replies?: Array<Comment>;
+  replies?: Array<CommentType>;
   level: number;
 }
 
@@ -68,7 +68,11 @@ const Comment = (props: CommentProps) => {
 };
 
 const Comments = (props: Props) => {
-  return <div className="comments">{<Comment {...props.comments[0]} level={1} />}</div>;
+  let comments = [];
+  for (let i = 0; i < props.comments.length; i++) {
+    comments.push(<Comment {...props.comments[0]} level={1} />);
+  }
+  return <div className="comments">{comments}</div>;
 };
 
 export default Comments;
