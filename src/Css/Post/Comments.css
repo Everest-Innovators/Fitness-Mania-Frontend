@@ -1,0 +1,78 @@
+.comments {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: white;
+}
+.comments > .comment {
+  display: flex;
+  flex-direction: column;
+}
+.comments > .comment > .top {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.comments > .comment > .top > img {
+  height: 25px;
+  width: 25px;
+  border-radius: 9999px;
+}
+.comments > .comment > .top > .username {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(187, 187, 187);
+}
+.comments > .comment > .top > .time {
+  font-size: 12px;
+  font-weight: 500;
+  color: gray;
+}
+.comments > .comment > .body {
+  font-size: 14px;
+  font-weight: 400;
+  color: #d1cccc;
+  margin-bottom: 6px;
+  margin-left: 35px;
+}
+.comments > .comment > .bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.comments > .comment > .bottom > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 13px;
+  border-radius: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.comments > .comment > .bottom > div:hover {
+  background: rgba(66, 63, 78, 0.589);
+}
+.comments > .comment > .bottom > div > img {
+  width: 18px;
+  height: 18px;
+  transition: all 0.5s;
+}
+.comments > .comment > .bottom > div > div {
+  font-size: 13px;
+}
+.comments > .comment > .bottom > .votes > .like:hover {
+  filter: invert(64%) sepia(74%) saturate(4886%) hue-rotate(88deg) brightness(120%) contrast(129%);
+}
+.comments > .comment > .bottom > .votes > .dislike:hover {
+  filter: invert(62%) sepia(31%) saturate(2727%) hue-rotate(358deg) brightness(100%) contrast(107%);
+}
+.comments > .comment > .bottom > img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

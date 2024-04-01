@@ -38,11 +38,12 @@ interface CommentProps {
   likes: number;
   dislikes: number;
   replies?: Array<Comment>;
+  level: number;
 }
 
 const Comment = (props: CommentProps) => {
   return (
-    <div className="comment">
+    <div className="comment" style={{ width: 750 - (props.level - 1) * 50 }}>
       <div className="top">
         <img src={props.author.avatar} alt="Avatar" />
         <div className="username">@{props.author.username}</div>
@@ -67,7 +68,7 @@ const Comment = (props: CommentProps) => {
 };
 
 const Comments = (props: Props) => {
-  return <div className="comments">{<Comment {...props.comments[0]} />}</div>;
+  return <div className="comments">{<Comment {...props.comments[0]} level={1} />}</div>;
 };
 
 export default Comments;
