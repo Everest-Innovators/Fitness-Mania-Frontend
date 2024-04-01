@@ -1,12 +1,9 @@
 import React from "react";
 import "../../../Css/Post/Comments.css";
-import threedotsPng from "../../../Assets/threedots.png";
 import likePng from "../../../Assets/like.png";
 import dislikePng from "../../../Assets/dislike.png";
 import commentPng from "../../../Assets/comment.png";
-import sharePng from "../../../Assets/share.png";
-import backPng from "../../../Assets/back.png";
-import Avatar from "../../../Assets/avatar.png";
+import plusPng from "../../../Assets/plus.png";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 
@@ -50,6 +47,20 @@ const Comment = (props: CommentProps) => {
         <img src={props.author.avatar} alt="Avatar" />
         <div className="username">@{props.author.username}</div>
         <div className="time">{timeAgo.format(props.timestmap, "mini")} ago</div>
+      </div>
+      <div className="body">{props.body}</div>
+      <div className="bottom">
+        <img src={plusPng} alt="View Replies" />
+        <div className="votes">
+          <img className="like" src={likePng} alt="Like" />
+          <div style={{ marginRight: 8 }}>{props.likes}</div>
+          <img className="dislike" src={dislikePng} alt="Dislike" />
+          <div>{props.dislikes}</div>
+        </div>
+        <div className="comment">
+          <img src={commentPng} alt="Comment" />
+          <div>Reply</div>
+        </div>
       </div>
     </div>
   );
