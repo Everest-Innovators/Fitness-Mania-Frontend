@@ -1,15 +1,15 @@
 import React from "react";
 import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 import threedotsPng from "../../Assets/threedots.png";
 import likePng from "../../Assets/like.png";
 import dislikePng from "../../Assets/dislike.png";
 import commentPng from "../../Assets/comment.png";
 import sharePng from "../../Assets/share.png";
 import "../../Css/Post/Post.css";
+import { Link } from "react-router-dom";
 
 //timeAgo
-import en from "javascript-time-ago/locale/en";
-import { Link } from "react-router-dom";
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 

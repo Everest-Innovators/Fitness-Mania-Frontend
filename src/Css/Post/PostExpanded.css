@@ -1,0 +1,88 @@
+.postExpanded {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 28px;
+}
+.postExpanded > .postCont {
+  width: 800px;
+  margin-top: 3px;
+  cursor: pointer;
+  color: #fff;
+  padding: 5px 25px;
+  border-radius: 20px;
+  transition: all 0.5s;
+}
+.postExpanded > .postCont > .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.postExpanded > .postCont > .top > .left {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+.postExpanded > .postCont > .top > .left > img {
+  height: 36px;
+  width: 36px;
+  border-radius: 9999px;
+}
+.postExpanded > .postCont > .top > .left > .username {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(187, 187, 187);
+}
+.postExpanded > .postCont > .top > .left > .time {
+  font-size: 14px;
+  font-weight: 500;
+  color: gray;
+}
+.postExpanded > .postCont > .top > img {
+  height: 24px;
+  width: 24px;
+}
+.postExpanded > .postCont > .title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.postExpanded > .postCont > .desc {
+  font-size: 17px;
+  font-weight: 400;
+  color: #d1cccc;
+  margin-bottom: 10px;
+}
+.postExpanded > .postCont > .bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.postExpanded > .postCont > .bottom > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  background: rgba(66, 63, 78, 0.151);
+  border-radius: 20px;
+  transition: all 0.5s;
+}
+.postExpanded > .postCont > .bottom > div:hover {
+  background: rgba(66, 63, 78, 0.589);
+}
+.postExpanded > .postCont > .bottom > div > img {
+  width: 26px;
+  height: 26px;
+  transition: all 0.5s;
+}
+.postExpanded > .postCont > .bottom > .votes > .like:hover {
+  filter: invert(64%) sepia(74%) saturate(4886%) hue-rotate(88deg) brightness(120%) contrast(129%);
+}
+.postExpanded > .postCont > .bottom > .votes > .dislike:hover {
+  filter: invert(62%) sepia(31%) saturate(2727%) hue-rotate(358deg) brightness(100%) contrast(107%);
+}
