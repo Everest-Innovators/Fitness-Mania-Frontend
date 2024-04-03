@@ -3,6 +3,7 @@ import imagePng from "../../Assets/image.png";
 import "../../Css/Create/Create.css";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import ValidUser from "../../Utilities/ValidUser";
+import { api_url } from "../../Utilities/Constants";
 
 const Create = () => {
   const [title, setTitle] = useState<string>("");
@@ -13,11 +14,34 @@ const Create = () => {
   useEffect(() => {
     (async () => {
       let status = await ValidUser();
-      if (!status) navigate("/login");
+      if (!status) navigate("/register");
     })();
   }, [navigate]);
 
-  const onSubmit = () => {};
+  const onSubmit = async () => {
+    let id = window.localStorage.getItem("id");
+    let password = window.localStorage.getItem("password");
+
+    if (!id || !password) return navigate("/register");
+    const res = await fetch(`${api_url}/create_post`, {
+      method: "POST",
+      body: JSON.stringify({
+        id,
+        password,
+        title,
+        bodd: description,
+      }),
+      headers: {
+        "Content-Type": "application.json",
+      },
+    });
+    let resData = await res.json();
+    console.log(resData);
+    if (res.status === 401) return navigate("/register");
+    if (res.status === 200) {
+      console.log("Post created successfully");
+    }
+  };
   return (
     <div className="create">
       <div className="container">
@@ -26,7 +50,7 @@ const Create = () => {
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
         <div>
           <img src={imagePng} alt="Attach" />
-          <button>Post</button>
+          <button onSubmit={onSubmit}>Post</button>
         </div>
       </div>
     </div>
