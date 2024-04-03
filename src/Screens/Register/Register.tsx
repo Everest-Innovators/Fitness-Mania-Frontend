@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import WomenImg from "../../Assets/women.png";
 import LogoImg from "../../Assets/logo.png";
 import "../../Css/Register/Register.css";
 import { Link } from "react-router-dom";
+import { api_url } from "../../Utilities/Constants";
 
 const Register = () => {
+  const [username, setUsername] = useState<string>("");
+  const [displayname, setDisplayName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const onSubmit = async () => {
+    const res = await fetch(`${api_url}/register`, {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        displayname,
+        email,
+        password,
+      }),
+      headers: {
+        "Content-Type": "application.json",
+      },
+    });
+    let resData = await res.json();
+    if (res.status === 200) {
+      window.localStorage.setItem("id", resData.id);
+      window.localStorage.setItem("password", password);
+    }
+  };
   return (
     <div className="register">
       <div className="left">
@@ -14,20 +39,20 @@ const Register = () => {
             Sign in
           </Link>
         </div>
-        <button>Register</button>
-        <input placeholder="Password" type="password" id="password" />
+        <button onClick={onSubmit}>Register</button>
+        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" id="password" />
         <label className="registerLabel" htmlFor="password">
           Password
         </label>
-        <input placeholder="Email" type="email" id="email" />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" id="email" />
         <label className="registerLabel" htmlFor="email">
           Email
         </label>
-        <input placeholder="Display Name" type="text" id="displayName" />
+        <input value={displayname} onChange={(e) => setDisplayName(e.target.value)} placeholder="Display Name" type="text" id="displayName" />
         <label className="registerLabel" htmlFor="displayName">
           Display Name
         </label>
-        <input placeholder="Username" type="text" id="username" />
+        <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" type="text" id="username" />
         <label className="registerLabel" htmlFor="username">
           Username
         </label>
