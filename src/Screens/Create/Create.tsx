@@ -23,13 +23,13 @@ const Create = () => {
     let password = window.localStorage.getItem("password");
 
     if (!id || !password) return navigate("/register");
-    const res = await fetch(`${api_url}/create_post`, {
+    const res = await fetch(`${api_url}/post`, {
       method: "POST",
       body: JSON.stringify({
         id,
         password,
         title,
-        bodd: description,
+        body: description,
       }),
       headers: {
         "Content-Type": "application.json",
@@ -50,7 +50,7 @@ const Create = () => {
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
         <div>
           <img src={imagePng} alt="Attach" />
-          <button onSubmit={onSubmit}>Post</button>
+          <button onClick={onSubmit}>Post</button>
         </div>
       </div>
     </div>
