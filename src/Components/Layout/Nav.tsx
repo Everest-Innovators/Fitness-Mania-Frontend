@@ -21,7 +21,7 @@ const Nav = () => {
       <div className="right">
         <img alt="Create" src={PlusImg} />
         <img alt="Notifications" src={NotificationImg} />
-        <img className="logo" alt="Profile" src={AvatarImg} />
+        <img className="pfp" alt="Profile" src={AvatarImg} />
         <div />
       </div>
     </div>

@@ -63,7 +63,7 @@ const PostExpanded = () => {
             setCommentContent(e.target.value);
           }}
           onClick={() => setCommentBottom(true)}
-          style={{ resize: !commentBottom ? "none" : "vertical", height: !commentBottom ? 47.5 : 0, minHeight: !commentBottom ? 0 : 47.5 }}
+          className={!commentBottom ? "textarea1" : "textarea2"}
           placeholder="Add a comment"
         />
         {commentBottom ? (

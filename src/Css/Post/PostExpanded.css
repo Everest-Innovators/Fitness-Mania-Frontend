@@ -95,7 +95,18 @@
   border-radius: 24px;
   margin: 12px 0;
 }
-.postExpanded > .addComment > textarea {
+.postExpanded > .addComment > .textarea1 {
+  resize: none;
+  width: 750px;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  padding: 12px 18px;
+  outline: 0;
+  font-size: 16px;
+  color: white;
+  height: 50px;
+}
+.postExpanded > .addComment > .textarea2 {
   resize: vertical;
   width: 750px;
   background: rgba(0, 0, 0, 0);
@@ -104,6 +115,7 @@
   outline: 0;
   font-size: 16px;
   color: white;
+  min-height: 50px;
 }
 .postExpanded > .addComment > .bottom {
   display: flex;

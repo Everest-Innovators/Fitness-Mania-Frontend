@@ -5,6 +5,7 @@ import Layout from "./Layout/Layout";
 import Register from "../Screens/Register/Register";
 import Login from "../Screens/Login/Login";
 import PostExpanded from "../Screens/Post/PostExpanded";
+import Create from "../Screens/Create/Create";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/post/:id" element={<PostExpanded />} />
           <Route path="/post" element={<PostExpanded />} />
+          <Route path="/create" element={<Create />} />
         </Route>
       </Routes>
     </BrowserRouter>

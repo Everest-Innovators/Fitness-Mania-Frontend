@@ -63,8 +63,9 @@
 .nav > .right > img {
   height: 28px;
   width: 28px;
+  cursor: pointer;
 }
-.nav > .right > .logo {
+.nav > .right > .pfp {
   height: 35px;
   width: 35px;
   border-radius: 9999px;
