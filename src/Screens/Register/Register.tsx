@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WomenImg from "../../Assets/women.png";
 import LogoImg from "../../Assets/logo.png";
 import "../../Css/Register/Register.css";
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { api_url } from "../../Utilities/Constants";
+import ValidUser from "../../Utilities/ValidUser";
 
 const Register = () => {
   const [username, setUsername] = useState<string>("");
   const [displayname, setDisplayName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const navigate: NavigateFunction = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      let status = await ValidUser();
+      if (status) navigate("/");
+    })();
+  }, [navigate]);
 
   const onSubmit = async () => {
     const res = await fetch(`${api_url}/register`, {
@@ -28,6 +38,7 @@ const Register = () => {
     if (res.status === 200) {
       window.localStorage.setItem("id", resData.id);
       window.localStorage.setItem("password", password);
+      navigate("/");
     }
   };
   return (
