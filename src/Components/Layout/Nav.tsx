@@ -5,11 +5,14 @@ import NotificationImg from "../../Assets/notification.png";
 import PlusImg from "../../Assets/plus.png";
 import SearchImg from "../../Assets/search.png";
 import AvatarImg from "../../Assets/avatar.png";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const Nav = () => {
+  const navigate: NavigateFunction = useNavigate();
+
   return (
     <div className="nav">
-      <div className="branding">
+      <div style={{ cursor: "pointer" }} onClick={() => navigate("/")} className="branding">
         <img alt="Logo" src={LogoImg} />
         <div className="logo">Fitness Mania</div>
       </div>
@@ -19,7 +22,7 @@ const Nav = () => {
         <div />
       </div>
       <div className="right">
-        <img alt="Create" src={PlusImg} />
+        <img onClick={() => navigate("/create")} alt="Create" src={PlusImg} />
         <img alt="Notifications" src={NotificationImg} />
         <img className="pfp" alt="Profile" src={AvatarImg} />
         <div />
