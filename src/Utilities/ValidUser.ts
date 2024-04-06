@@ -13,7 +13,7 @@ export default async function ValidUser(): Promise<boolean> {
       password,
     }),
     headers: {
-      "Content-Type": "application.json",
+      "Content-Type": "application/json",
     },
   });
   if (res.status !== 200) return false;

@@ -31,7 +31,7 @@ const Register = () => {
         password,
       }),
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
       },
     });
     let resData = await res.json();

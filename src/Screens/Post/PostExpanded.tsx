@@ -10,6 +10,11 @@ import "../../Css/Post/PostExpanded.css";
 import Comments from "./Components/Comments";
 import { timeAgo } from "../../Components/App";
 import { useLocation, useNavigate } from "react-router-dom";
+import { api_url } from "../../Utilities/Constants";
+
+interface PostData {
+  username: string;
+}
 
 const PostExpanded = () => {
   const navigate = useNavigate();
@@ -17,9 +22,30 @@ const PostExpanded = () => {
   useEffect(() => {
     let postID = location.pathname.split("/")[2];
     if (!postID || Number.isNaN(+postID)) navigate("/error");
+
+    (async () => {
+      //post data
+      const res = await fetch(`${api_url}/getpost/${postID}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.status !== 200) return navigate("/error");
+      const resData = await res.json();
+      //user data
+      const userRes = await fetch(`${api_url}/getuser/${resData[1]}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const userData = await userRes.json();
+    })();
   }, [location, navigate]);
   const [commentBottom, setCommentBottom] = useState<boolean>(false);
   const [commentContent, setCommentContent] = useState<string>("");
+
   return (
     <div className="postExpanded">
       <div className="postCont">

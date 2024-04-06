@@ -28,7 +28,7 @@ const Post = (props: Props) => {
       const res = await fetch(`${api_url}/getuser/${props.userid}`, {
         method: "GET",
         headers: {
-          "Content-Type": "application.json",
+          "Content-Type": "application/json",
         },
       });
       let resData = await res.json();

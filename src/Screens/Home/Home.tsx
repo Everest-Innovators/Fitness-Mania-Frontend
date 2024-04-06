@@ -10,7 +10,7 @@ const Home = () => {
       const res = await fetch(`${api_url}/latest`, {
         method: "GET",
         headers: {
-          "Content-Type": "application.json",
+          "Content-Type": "application/json",
         },
       });
       let resData = await res.json();
