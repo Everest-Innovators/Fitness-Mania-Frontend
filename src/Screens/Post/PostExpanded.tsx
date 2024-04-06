@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import threedotsPng from "../../Assets/threedots.png";
 import likePng from "../../Assets/like.png";
 import dislikePng from "../../Assets/dislike.png";
@@ -9,8 +9,15 @@ import Avatar from "../../Assets/avatar.png";
 import "../../Css/Post/PostExpanded.css";
 import Comments from "./Components/Comments";
 import { timeAgo } from "../../Components/App";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PostExpanded = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    let postID = location.pathname.split("/")[2];
+    if (!postID || Number.isNaN(+postID)) navigate("/error");
+  }, [location, navigate]);
   const [commentBottom, setCommentBottom] = useState<boolean>(false);
   const [commentContent, setCommentContent] = useState<string>("");
   return (

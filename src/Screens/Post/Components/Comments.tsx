@@ -76,7 +76,7 @@ const Comment = (props: CommentProps) => {
 const Comments = (props: Props) => {
   let comments = [];
   for (let i = 0; i < props.comments.length; i++) {
-    comments.push(<Comment {...props.comments[i]} level={props.level} />);
+    comments.push(<Comment key={i} {...props.comments[i]} level={props.level} />);
   }
   return <div className="comments">{comments}</div>;
 };

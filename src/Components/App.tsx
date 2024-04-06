@@ -8,6 +8,7 @@ import PostExpanded from "../Screens/Post/PostExpanded";
 import Create from "../Screens/Create/Create";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import Error from "../Screens/Error/Error";
 
 TimeAgo.addDefaultLocale(en);
 export const timeAgo = new TimeAgo("en-US");
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/post" element={<PostExpanded />} />
           <Route path="/create" element={<Create />} />
         </Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
