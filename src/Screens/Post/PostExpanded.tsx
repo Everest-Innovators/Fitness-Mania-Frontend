@@ -11,7 +11,7 @@ import Comments from "./Components/Comments";
 import { timeAgo } from "../../Components/App";
 import { useLocation, useNavigate } from "react-router-dom";
 import { api_url } from "../../Utilities/Constants";
-import { reactPost } from "../../Utilities/Reactions";
+import { reactPost } from "../../Utilities/Post";
 
 interface PostData {
   username: string;
@@ -22,6 +22,8 @@ interface PostData {
   dislikes: number;
   comments: number;
   post_id: number;
+  likeClass: "like" | "liked";
+  dislikeClass: "dislike" | "disliked";
 }
 
 const PostExpanded = () => {
@@ -53,7 +55,6 @@ const PostExpanded = () => {
         },
       });
       const userData = await userRes.json();
-      console.log(userData);
       setPostData({
         body: resData[3],
         comments: resData[8] ? resData[8].length : 0,
@@ -63,9 +64,12 @@ const PostExpanded = () => {
         title: resData[2],
         username: userData[0],
         post_id: +postID,
+        likeClass: resData[6] && resData[6].includes(userData[0]) ? "liked" : "like",
+        dislikeClass: resData[7] && resData[7].includes(userData[0]) ? "disliked" : "dislike",
       });
     })();
   }, [location, navigate]);
+
   if (postData)
     return (
       <div className="postExpanded">
@@ -85,20 +89,22 @@ const PostExpanded = () => {
             <div className="votes">
               <img
                 onClick={async () => {
-                  await reactPost(postData.post_id, "like");
-                  navigate(`/post/${postData.post_id}`);
+                  let ret = await reactPost(postData.post_id, "like");
+                  if (!ret) navigate(`/register`);
+                  else navigate(`/post/${postData.post_id}`);
                 }}
-                className="like"
+                className={postData.likeClass}
                 src={likePng}
                 alt="Like"
               />
               <div style={{ marginRight: 8 }}>{postData.likes}</div>
               <img
                 onClick={async () => {
-                  await reactPost(postData.post_id, "dislike");
-                  navigate(`/post/${postData.post_id}`);
+                  let ret = await reactPost(postData.post_id, "dislike");
+                  if (!ret) navigate(`/register`);
+                  else navigate(`/post/${postData.post_id}`);
                 }}
-                className="dislike"
+                className={postData.dislikeClass}
                 src={dislikePng}
                 alt="Dislike"
               />

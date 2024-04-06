@@ -86,6 +86,12 @@
 .postExpanded > .postCont > .bottom > .votes > .dislike:hover {
   filter: invert(62%) sepia(31%) saturate(2727%) hue-rotate(358deg) brightness(100%) contrast(107%);
 }
+.postExpanded > .postCont > .bottom > .votes > .liked {
+  filter: invert(64%) sepia(74%) saturate(4886%) hue-rotate(88deg) brightness(120%) contrast(129%);
+}
+.postExpanded > .postCont > .bottom > .votes > .disliked {
+  filter: invert(62%) sepia(31%) saturate(2727%) hue-rotate(358deg) brightness(100%) contrast(107%);
+}
 
 .postExpanded > .addComment {
   display: flex;
