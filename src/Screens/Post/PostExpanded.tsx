@@ -11,6 +11,7 @@ import Comments from "./Components/Comments";
 import { timeAgo } from "../../Components/App";
 import { useLocation, useNavigate } from "react-router-dom";
 import { api_url } from "../../Utilities/Constants";
+import { reactPost } from "../../Utilities/Reactions";
 
 interface PostData {
   username: string;
@@ -20,12 +21,16 @@ interface PostData {
   likes: number;
   dislikes: number;
   comments: number;
+  post_id: number;
 }
 
 const PostExpanded = () => {
   const [postData, setPostData] = useState<PostData>();
   const navigate = useNavigate();
   const location = useLocation();
+  const [commentBottom, setCommentBottom] = useState<boolean>(false);
+  const [commentContent, setCommentContent] = useState<string>("");
+
   useEffect(() => {
     let postID = location.pathname.split("/")[2];
     if (!postID || Number.isNaN(+postID)) navigate("/error");
@@ -48,6 +53,7 @@ const PostExpanded = () => {
         },
       });
       const userData = await userRes.json();
+      console.log(userData);
       setPostData({
         body: resData[3],
         comments: resData[8] ? resData[8].length : 0,
@@ -56,11 +62,10 @@ const PostExpanded = () => {
         timestamp: new Date(resData[5]).getTime(),
         title: resData[2],
         username: userData[0],
+        post_id: +postID,
       });
     })();
   }, [location, navigate]);
-  const [commentBottom, setCommentBottom] = useState<boolean>(false);
-  const [commentContent, setCommentContent] = useState<string>("");
   if (postData)
     return (
       <div className="postExpanded">
@@ -78,9 +83,25 @@ const PostExpanded = () => {
           <div className="desc">{postData.body}</div>
           <div className="bottom">
             <div className="votes">
-              <img className="like" src={likePng} alt="Like" />
+              <img
+                onClick={async () => {
+                  await reactPost(postData.post_id, "like");
+                  navigate(`/post/${postData.post_id}`);
+                }}
+                className="like"
+                src={likePng}
+                alt="Like"
+              />
               <div style={{ marginRight: 8 }}>{postData.likes}</div>
-              <img className="dislike" src={dislikePng} alt="Dislike" />
+              <img
+                onClick={async () => {
+                  await reactPost(postData.post_id, "dislike");
+                  navigate(`/post/${postData.post_id}`);
+                }}
+                className="dislike"
+                src={dislikePng}
+                alt="Dislike"
+              />
               <div>{postData.dislikes}</div>
             </div>
             <div className="comment">
