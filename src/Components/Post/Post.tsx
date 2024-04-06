@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
 import threedotsPng from "../../Assets/threedots.png";
 import likePng from "../../Assets/like.png";
 import dislikePng from "../../Assets/dislike.png";
@@ -12,7 +11,6 @@ import { Link } from "react-router-dom";
 import { api_url } from "../../Utilities/Constants";
 
 //timeAgo
-TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
 interface Props {

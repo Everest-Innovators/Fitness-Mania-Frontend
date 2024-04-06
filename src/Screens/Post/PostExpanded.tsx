@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
 import threedotsPng from "../../Assets/threedots.png";
 import likePng from "../../Assets/like.png";
 import dislikePng from "../../Assets/dislike.png";
@@ -12,7 +11,6 @@ import "../../Css/Post/PostExpanded.css";
 import Comments from "./Components/Comments";
 
 //timeAgo
-TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
 const PostExpanded = () => {

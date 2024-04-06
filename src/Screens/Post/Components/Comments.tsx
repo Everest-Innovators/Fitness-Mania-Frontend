@@ -6,10 +6,8 @@ import commentPng from "../../../Assets/comment.png";
 import plusPng from "../../../Assets/plus.png";
 import minusPng from "../../../Assets/minus.png";
 import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
 
 //timeAgo
-TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
 interface CommentType {
