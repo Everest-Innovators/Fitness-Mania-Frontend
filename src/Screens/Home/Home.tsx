@@ -18,6 +18,7 @@ const Home = () => {
       for (let i = 0; i < resData.length; i++) {
         tempPost.push(
           <Post
+            key={i}
             userid={resData[i][1]}
             timestamp={new Date(resData[i][5]).getTime()}
             body={resData[i][3]}

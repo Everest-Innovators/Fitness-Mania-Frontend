@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import TimeAgo from "javascript-time-ago";
 import threedotsPng from "../../Assets/threedots.png";
 import likePng from "../../Assets/like.png";
 import dislikePng from "../../Assets/dislike.png";
@@ -9,9 +8,7 @@ import avatarPng from "../../Assets/avatar.png";
 import "../../Css/Post/Post.css";
 import { Link } from "react-router-dom";
 import { api_url } from "../../Utilities/Constants";
-
-//timeAgo
-const timeAgo = new TimeAgo("en-US");
+import { timeAgo } from "../App";
 
 interface Props {
   userid: number;

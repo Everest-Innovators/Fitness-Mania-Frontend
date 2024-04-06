@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TimeAgo from "javascript-time-ago";
 import threedotsPng from "../../Assets/threedots.png";
 import likePng from "../../Assets/like.png";
 import dislikePng from "../../Assets/dislike.png";
@@ -9,9 +8,7 @@ import backPng from "../../Assets/back.png";
 import Avatar from "../../Assets/avatar.png";
 import "../../Css/Post/PostExpanded.css";
 import Comments from "./Components/Comments";
-
-//timeAgo
-const timeAgo = new TimeAgo("en-US");
+import { timeAgo } from "../../Components/App";
 
 const PostExpanded = () => {
   const [commentBottom, setCommentBottom] = useState<boolean>(false);

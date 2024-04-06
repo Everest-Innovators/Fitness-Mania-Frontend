@@ -5,10 +5,7 @@ import dislikePng from "../../../Assets/dislike.png";
 import commentPng from "../../../Assets/comment.png";
 import plusPng from "../../../Assets/plus.png";
 import minusPng from "../../../Assets/minus.png";
-import TimeAgo from "javascript-time-ago";
-
-//timeAgo
-const timeAgo = new TimeAgo("en-US");
+import { timeAgo } from "../../../Components/App";
 
 interface CommentType {
   author: {
