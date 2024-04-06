@@ -22,7 +22,7 @@ const Home = () => {
             avatar={Avatar}
             username="new_"
             timestamp={new Date(resData[i][5]).getTime()}
-            body={resData[i][4]}
+            body={resData[i][3]}
             comments={resData[i][8] ? resData[i][8].length : 0}
             dislike={resData[i][7] ? resData[i][7].length : 0}
             like={resData[i][6] ? resData[i][6].length : 0}
@@ -33,7 +33,7 @@ const Home = () => {
       }
       setPosts(tempPost);
     })();
-  });
+  }, []);
   return (
     <div className="home">
       <div className="posts">{posts}</div>
