@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import threedotsPng from "../../Assets/threedots.png";
@@ -6,16 +6,17 @@ import likePng from "../../Assets/like.png";
 import dislikePng from "../../Assets/dislike.png";
 import commentPng from "../../Assets/comment.png";
 import sharePng from "../../Assets/share.png";
+import avatarPng from "../../Assets/avatar.png";
 import "../../Css/Post/Post.css";
 import { Link } from "react-router-dom";
+import { api_url } from "../../Utilities/Constants";
 
 //timeAgo
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
 interface Props {
-  avatar: string;
-  username: string;
+  userid: number;
   timestamp: number;
   title: string;
   body: string;
@@ -26,13 +27,26 @@ interface Props {
 }
 
 const Post = (props: Props) => {
+  const [username, setUsername] = useState<String>("loading...");
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(`${api_url}/getuser/${props.userid}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application.json",
+        },
+      });
+      let resData = await res.json();
+      setUsername(resData[0]);
+    })();
+  }, [props]);
   return (
     <Link to={`/post/${props.postId}`} className="post">
       <div className="postCont">
         <div className="top">
           <div className="left">
-            <img src={props.avatar} alt="Avatar" />
-            <div className="username">@{props.username}</div>
+            <img src={avatarPng} alt="Avatar" />
+            <div className="username">@{username}</div>
             <div className="time">{timeAgo.format(Date.now(), "mini")} ago</div>
           </div>
           <img src={threedotsPng} alt="Dots" />

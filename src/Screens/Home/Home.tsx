@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Post from "../../Components/Post/Post";
-import Avatar from "../../Assets/avatar.png";
 import "../../Css/Home/Home.css";
 import { api_url } from "../../Utilities/Constants";
 
@@ -19,8 +18,7 @@ const Home = () => {
       for (let i = 0; i < resData.length; i++) {
         tempPost.push(
           <Post
-            avatar={Avatar}
-            username="new_"
+            userid={resData[i][1]}
             timestamp={new Date(resData[i][5]).getTime()}
             body={resData[i][3]}
             comments={resData[i][8] ? resData[i][8].length : 0}
