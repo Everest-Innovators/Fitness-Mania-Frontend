@@ -7,11 +7,11 @@ import sharePng from "../../Assets/share.png";
 import backPng from "../../Assets/back.png";
 import Avatar from "../../Assets/avatar.png";
 import "../../Css/Post/PostExpanded.css";
-import Comments from "./Components/Comments";
+import Comments, { CommentProps, CommentType } from "./Components/Comments";
 import { timeAgo } from "../../Components/App";
 import { useLocation, useNavigate } from "react-router-dom";
 import { api_url } from "../../Utilities/Constants";
-import { reactPost } from "../../Utilities/Post";
+import { commentPost, reactPost } from "../../Utilities/Post";
 
 interface PostData {
   username: string;
@@ -32,6 +32,7 @@ const PostExpanded = () => {
   const location = useLocation();
   const [commentBottom, setCommentBottom] = useState<boolean>(false);
   const [commentContent, setCommentContent] = useState<string>("");
+  const [comments, setComments] = useState<JSX.Element>(<Comments comments={[]} level={1} />);
 
   useEffect(() => {
     let postID = location.pathname.split("/")[2];
@@ -55,6 +56,7 @@ const PostExpanded = () => {
         },
       });
       const userData = await userRes.json();
+
       setPostData({
         body: resData[3],
         comments: resData[8] ? resData[8].length : 0,
@@ -64,9 +66,35 @@ const PostExpanded = () => {
         title: resData[2],
         username: userData[0],
         post_id: +postID,
-        likeClass: resData[6] && resData[6].includes(userData[0]) ? "liked" : "like",
-        dislikeClass: resData[7] && resData[7].includes(userData[0]) ? "disliked" : "dislike",
+        likeClass: resData[6] && resData[6].includes(resData[1]) ? "liked" : "like",
+        dislikeClass: resData[7] && resData[7].includes(resData[1]) ? "disliked" : "dislike",
       });
+
+      //comments data
+      const comentsRes = await fetch(`${api_url}/getcomments/${postID}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      let commentsData = await comentsRes.json();
+      let comments: Array<CommentType> = [];
+      for (let i = 0; i < commentsData.length; i++) {
+        const userRes = await fetch(`${api_url}/getuser/${resData[1]}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const userData = await userRes.json();
+        comments.push({
+          author: { avatar: Avatar, username: userData[0] },
+          body: commentsData[i][4],
+          timestmap: new Date(commentsData[i][5]).getTime(),
+          replies: [],
+        });
+        setComments(<Comments comments={comments} level={1} />);
+      }
     })();
   }, [location, navigate]);
 
@@ -141,13 +169,24 @@ const PostExpanded = () => {
               >
                 Cancel
               </button>
-              <button className="comment">Comment</button>
+              <button
+                onClick={async () => {
+                  let ret = await commentPost(postData.post_id, commentContent);
+                  setCommentContent("");
+                  if (!ret) navigate(`/register`);
+                  else navigate(`/post/${postData.post_id}`);
+                }}
+                className="comment"
+              >
+                Comment
+              </button>
             </div>
           ) : (
             ""
           )}
         </div>
-        <Comments
+        {comments}
+        {/* {<Comments
           level={1}
           comments={[
             {
@@ -302,7 +341,7 @@ const PostExpanded = () => {
               ],
             },
           ]}
-        />
+        />} */}
       </div>
     );
   else return <div>Loading</div>;

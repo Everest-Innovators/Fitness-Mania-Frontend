@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import "../../../Css/Post/Comments.css";
-import likePng from "../../../Assets/like.png";
-import dislikePng from "../../../Assets/dislike.png";
 import commentPng from "../../../Assets/comment.png";
 import plusPng from "../../../Assets/plus.png";
 import minusPng from "../../../Assets/minus.png";
 import { timeAgo } from "../../../Components/App";
 
-interface CommentType {
+export interface CommentType {
   author: {
     username: string;
     avatar: string;
   };
   timestmap: number;
   body: string;
-  likes: number;
-  dislikes: number;
   replies: Array<CommentType>;
 }
 
@@ -24,15 +20,13 @@ interface Props {
   level: number;
 }
 
-interface CommentProps {
+export interface CommentProps {
   author: {
     username: string;
     avatar: string;
   };
   timestmap: number;
   body: string;
-  likes: number;
-  dislikes: number;
   replies?: Array<CommentType>;
   level: number;
 }
@@ -53,12 +47,6 @@ const Comment = (props: CommentProps) => {
         ) : (
           <img onClick={() => setDisplayReplies(!displayReplies)} src={displayReplies ? minusPng : plusPng} alt="View Replies" />
         )}
-        <div className="votes">
-          <img className="like" src={likePng} alt="Like" />
-          <div style={{ marginRight: 8 }}>{props.likes}</div>
-          <img className="dislike" src={dislikePng} alt="Dislike" />
-          <div>{props.dislikes}</div>
-        </div>
         {props.level >= 4 ? (
           ""
         ) : (

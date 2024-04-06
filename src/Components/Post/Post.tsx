@@ -42,7 +42,7 @@ const Post = (props: Props) => {
           <div className="left">
             <img src={avatarPng} alt="Avatar" />
             <div className="username">@{username}</div>
-            <div className="time">{timeAgo.format(Date.now(), "mini")} ago</div>
+            <div className="time">{timeAgo.format(props.timestamp, "mini")} ago</div>
           </div>
           <img src={threedotsPng} alt="Dots" />
         </div>
