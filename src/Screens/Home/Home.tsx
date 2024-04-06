@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Post from "../../Components/Post/Post";
 import Avatar from "../../Assets/avatar.png";
 import "../../Css/Home/Home.css";
+import { api_url } from "../../Utilities/Constants";
 
 const Home = () => {
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(`${api_url}/latest`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application.json",
+        },
+      });
+      let resData = await res.json();
+    })();
+  });
   return (
     <div className="home">
       <div className="posts">
