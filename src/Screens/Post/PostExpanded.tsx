@@ -80,7 +80,7 @@ const PostExpanded = () => {
       let commentsData = await comentsRes.json();
       let comments: Array<CommentType> = [];
       for (let i = 0; i < commentsData.length; i++) {
-        const userRes = await fetch(`${api_url}/getuser/${resData[1]}`, {
+        const userRes = await fetch(`${api_url}/getuser/${commentsData[i][1]}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
