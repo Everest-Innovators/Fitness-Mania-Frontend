@@ -91,12 +91,13 @@ const Comment = (props: CommentProps) => {
               onClick={async () => {
                 let ret = await commentPost(props.postId, commentContent, props.id);
                 setCommentContent("");
+                setExpand(false);
                 if (!ret) navigate(`/register`);
                 else navigate(`/post/${props.postId}`);
               }}
               className="comment"
             >
-              Comment
+              Reply
             </button>
           </div>
         </div>
