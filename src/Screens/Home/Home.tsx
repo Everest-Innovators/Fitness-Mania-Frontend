@@ -7,6 +7,7 @@ const Home = () => {
   const [posts, setPosts] = useState<Array<JSX.Element>>([]);
   useEffect(() => {
     (async () => {
+      const userId = localStorage.getItem("id");
       const res = await fetch(`${api_url}/latest`, {
         method: "GET",
         headers: {
@@ -27,8 +28,8 @@ const Home = () => {
             like={resData[i][6] ? resData[i][6].length : 0}
             postId={resData[i][0]}
             title={resData[i][2]}
-            likeClass={resData[i][6] && resData[i][6].includes(resData[i][1]) ? "liked" : "like"}
-            dislikeClass={resData[i][7] && resData[i][7].includes(resData[i][1]) ? "disliked" : "dislike"}
+            likeClass={resData[i][6] && resData[i][6].includes(+(userId || "")) ? "liked" : "like"}
+            dislikeClass={resData[i][7] && resData[i][7].includes(+(userId || "")) ? "disliked" : "dislike"}
           />
         );
       }

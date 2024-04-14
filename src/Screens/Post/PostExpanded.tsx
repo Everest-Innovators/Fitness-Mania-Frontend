@@ -56,7 +56,7 @@ const PostExpanded = () => {
         },
       });
       const userData = await userRes.json();
-
+      const id = localStorage.getItem("id");
       setPostData({
         body: resData[3],
         comments: resData[8] ? resData[8].length : 0,
@@ -66,8 +66,8 @@ const PostExpanded = () => {
         title: resData[2],
         username: userData[0],
         post_id: +postID,
-        likeClass: resData[6] && resData[6].includes(resData[1]) ? "liked" : "like",
-        dislikeClass: resData[7] && resData[7].includes(resData[1]) ? "disliked" : "dislike",
+        likeClass: resData[6] && resData[6].includes(+(id || "")) ? "liked" : "like",
+        dislikeClass: resData[7] && resData[7].includes(+(id || "")) ? "disliked" : "dislike",
       });
 
       //comments data
