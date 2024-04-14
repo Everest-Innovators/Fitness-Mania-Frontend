@@ -23,7 +23,6 @@ const Nav = () => {
       </div>
       <div className="right">
         <img onClick={() => navigate("/create")} alt="Create" src={PlusImg} />
-        <img alt="Notifications" src={NotificationImg} />
         <img className="pfp" alt="Profile" src={AvatarImg} />
         <div />
       </div>
