@@ -40,6 +40,8 @@ const Create = () => {
     if (res.status === 401) return navigate("/register");
     if (res.status === 200) {
       console.log("Post created successfully");
+      setTitle("");
+      setDescription("");
     }
   };
   return (

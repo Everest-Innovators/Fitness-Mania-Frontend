@@ -104,7 +104,13 @@ const PostExpanded = () => {
         <div className="postCont">
           <div className="top">
             <div className="left">
-              <img src={backPng} alt="Back" />
+              <img
+                onClick={() => {
+                  navigate("/");
+                }}
+                src={backPng}
+                alt="Back"
+              />
               <img src={Avatar} alt="Avatar" />
               <div className="username">{postData.username}</div>
               <div className="time">{timeAgo.format(postData.timestamp, "mini")} ago</div>

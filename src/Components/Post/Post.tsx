@@ -61,7 +61,6 @@ const Post = (props: Props) => {
               onClick={async () => {
                 let ret = await reactPost(props.postId, "like");
                 if (!ret) navigate(`/register`);
-                else navigate(`/post/${props.postId}`);
               }}
               className={props.likeClass}
               src={likePng}
@@ -72,7 +71,6 @@ const Post = (props: Props) => {
               onClick={async () => {
                 let ret = await reactPost(props.postId, "dislike");
                 if (!ret) navigate(`/register`);
-                else navigate(`/post/${props.postId}`);
               }}
               className={props.dislikeClass}
               src={dislikePng}
