@@ -32,7 +32,7 @@ const PostExpanded = () => {
   const location = useLocation();
   const [commentBottom, setCommentBottom] = useState<boolean>(false);
   const [commentContent, setCommentContent] = useState<string>("");
-  const [comments, setComments] = useState<JSX.Element>(<Comments comments={[]} level={1} />);
+  const [comments, setComments] = useState<JSX.Element>(<Comments postId={0} comments={[]} level={1} />);
 
   useEffect(() => {
     let postID = location.pathname.split("/")[2];
@@ -78,7 +78,9 @@ const PostExpanded = () => {
         },
       });
       let commentsData = await comentsRes.json();
-      let comments: Array<CommentType> = [];
+      let group: Record<string, CommentType[]> = {
+        main: [],
+      };
       for (let i = 0; i < commentsData.length; i++) {
         const userRes = await fetch(`${api_url}/getuser/${commentsData[i][1]}`, {
           method: "GET",
@@ -87,14 +89,45 @@ const PostExpanded = () => {
           },
         });
         const userData = await userRes.json();
-        comments.push({
-          author: { avatar: Avatar, username: userData[0] },
-          body: commentsData[i][4],
-          timestmap: new Date(commentsData[i][5]).getTime(),
-          replies: [],
-        });
-        setComments(<Comments comments={comments} level={1} />);
+        if (!commentsData[i][3]) {
+          group.main.push({
+            author: { avatar: Avatar, username: userData[0] },
+            body: commentsData[i][4],
+            timestmap: new Date(commentsData[i][5]).getTime(),
+            replies: [],
+            id: commentsData[i][0],
+          });
+        } else {
+          if (group[commentsData[i][3]]) {
+            group[commentsData[i][3]].push({
+              author: { avatar: Avatar, username: userData[0] },
+              body: commentsData[i][4],
+              timestmap: new Date(commentsData[i][5]).getTime(),
+              replies: [],
+              id: commentsData[i][0],
+            });
+          } else {
+            group[commentsData[i][3]] = [
+              {
+                author: { avatar: Avatar, username: userData[0] },
+                body: commentsData[i][4],
+                timestmap: new Date(commentsData[i][5]).getTime(),
+                replies: [],
+                id: commentsData[i][0],
+              },
+            ];
+          }
+        }
       }
+      let keys = Object.keys(group);
+      for (let i = 0; i < keys.length; i++) {
+        for (let j = 0; j < keys.length; j++) {
+          for (let k = 0; k < group[keys[j]].length; k++) {
+            if (keys[i] === group[keys[j]][k].id?.toString()) group[keys[j]][k].replies.push(...group[keys[i]]);
+          }
+        }
+      }
+      setComments(<Comments postId={+postID} comments={group.main} level={1} />);
     })();
   }, [location, navigate]);
 

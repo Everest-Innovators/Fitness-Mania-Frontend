@@ -81,3 +81,65 @@
   width: 20px;
   height: 20px;
 }
+.comments > .comment > .addComment {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid gray;
+  border-radius: 24px;
+  margin: 12px 0;
+}
+.comments > .comment > .addComment > .textarea1 {
+  resize: none;
+  width: 750px;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  padding: 12px 18px;
+  outline: 0;
+  font-size: 16px;
+  color: white;
+  height: 50px;
+}
+.comments > .comment > .addComment > .textarea2 {
+  resize: vertical;
+  width: 750px;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  padding: 12px 18px;
+  outline: 0;
+  font-size: 16px;
+  color: white;
+  min-height: 50px;
+}
+.comments > .comment > .addComment > .bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 14px 4px;
+  gap: 8px;
+}
+.comments > .comment > .addComment > .bottom > button {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  outline: 0;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.5s;
+}
+.comments > .comment > .addComment > .bottom > .cancel {
+  background: rgba(51, 51, 51, 0.5);
+}
+.comments > .comment > .addComment > .bottom > .comment {
+  background: rgba(0, 94, 202, 0.5);
+}
+.comments > .comment > .addComment > .bottom > .cancel:hover {
+  background: rgba(51, 51, 51);
+}
+.comments > .comment > .addComment > .bottom > .comment:hover {
+  background: rgba(0, 94, 202);
+}
