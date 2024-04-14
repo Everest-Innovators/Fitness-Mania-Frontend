@@ -27,6 +27,8 @@ const Home = () => {
             like={resData[i][6] ? resData[i][6].length : 0}
             postId={resData[i][0]}
             title={resData[i][2]}
+            likeClass={resData[i][6] && resData[i][6].includes(resData[i][1]) ? "liked" : "like"}
+            dislikeClass={resData[i][7] && resData[i][7].includes(resData[i][1]) ? "disliked" : "dislike"}
           />
         );
       }

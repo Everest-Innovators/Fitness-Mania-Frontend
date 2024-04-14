@@ -1,7 +1,6 @@
 import React from "react";
 import "../../Css/Layout/Nav.css";
 import LogoImg from "../../Assets/logo.png";
-import NotificationImg from "../../Assets/notification.png";
 import PlusImg from "../../Assets/plus.png";
 import SearchImg from "../../Assets/search.png";
 import AvatarImg from "../../Assets/avatar.png";
