@@ -13,7 +13,7 @@ const Nav = () => {
     <div className="nav">
       <div style={{ cursor: "pointer" }} onClick={() => navigate("/")} className="branding">
         <img alt="Logo" src={LogoImg} />
-        <div className="logo">Fitness Mania</div>
+        <div className="logo">Fenneiss</div>
       </div>
       <div className="search">
         <img alt="Search" src={SearchImg} />
